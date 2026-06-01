@@ -34,7 +34,7 @@ CSV_PATH = os.path.join(DATA_DIR, "records.csv")
 os.makedirs(PHOTO_DIR, exist_ok=True)
 
 # 天気を本物にしたいときは True（要ネット接続 / Open-Meteo・APIキー不要）
-USE_REAL_WEATHER_DEFAULT = False
+# 天気は常に Open-Meteo（無料API）から取得
 
 LEVEL_EMOJI = {"初級": "🟢初級", "中級": "🟡中級", "上級": "🔴上級"}
 
@@ -500,9 +500,7 @@ def real_weather(mtn):
 
 
 def get_weather(mtn):
-    if st.session_state.get("use_real_weather"):
-        return real_weather(mtn)
-    return mock_weather(mtn)
+    return real_weather(mtn)
 
 
 def weather_html(forecast):
@@ -653,10 +651,7 @@ if st.session_state.custom:
         unsafe_allow_html=True,
     )
 
-st.session_state.use_real_weather = st.toggle(
-    "🌐 リアルタイム天気を使う（要ネット接続）", value=USE_REAL_WEATHER_DEFAULT,
-    help="ONにすると Open-Meteo から本物の3日間予報を取得します。",
-)
+
 
 # ============================================================
 # メインナビ（タブ）
@@ -872,5 +867,3 @@ with tab_auto:
                             unsafe_allow_html=True)
                 st.markdown(weather_html(fc), unsafe_allow_html=True)
                 st.divider()
-
-st.caption("天気は現在ダミー表示です。上部トグルでOpen-Meteoの実データに切替できます。")
