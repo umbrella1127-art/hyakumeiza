@@ -170,12 +170,29 @@ st.markdown(
     /* ボタン文字は白 */
     .stButton > button, .stFormSubmitButton > button {color: #fff !important;}
 
-    /* ===== Streamlit ロゴ・ブランドボタンを非表示 ===== */
+    /* ===== Streamlit ロゴ・ブランドボタンを完全非表示 ===== */
     footer, #MainMenu,
+    header, header[data-testid="stHeader"],
     [data-testid="manage-app-button"],
     [data-testid="stStatusWidget"],
-    .viewerBadge_container__r5tak,
-    header[data-testid="stHeader"] {display: none !important; visibility: hidden !important; height: 0 !important;}
+    [data-testid="stToolbar"],
+    [data-testid="stDecoration"],
+    [data-testid="stAppDeployButton"],
+    .stDeployButton,
+    .stAppDeployButton,
+    div[class*="viewerBadge"],
+    div[class*="StatusWidget"],
+    div[class*="deploy" i],
+    iframe[title*="badge"],
+    a[href*="streamlit.io/cloud"] {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        width: 0 !important;
+        overflow: hidden !important;
+        position: absolute !important;
+        pointer-events: none !important;
+    }
     </style>
     """,
     unsafe_allow_html=True,
