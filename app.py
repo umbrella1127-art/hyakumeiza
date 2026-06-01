@@ -154,6 +154,28 @@ st.markdown(
     /* 進捗バー */
     .stProgress > div > div > div > div {
         background:linear-gradient(90deg,#f48fb1,#ce93d8,#9fa8da);}
+
+    /* ===== ダークモード対策：テキストを必ず濃い色に ===== */
+    [data-testid="stAppViewContainer"],
+    [data-testid="stAppViewContainer"] p,
+    [data-testid="stAppViewContainer"] span,
+    [data-testid="stAppViewContainer"] label,
+    [data-testid="stAppViewContainer"] li,
+    [data-testid="stAppViewContainer"] div {color: #4a3040;}
+    /* ヒーロー内は白に戻す */
+    .hero, .hero h1, .hero div, .hero span, .hero p {color: #fff !important;}
+    .badge.on, .badge.on span {color: #ad5389 !important;}
+    .subcount, .subcount span {color: #7b1fa2 !important;}
+    .pill {color: #fff !important;}
+    /* ボタン文字は白 */
+    .stButton > button, .stFormSubmitButton > button {color: #fff !important;}
+
+    /* ===== Streamlit ロゴ・ブランドボタンを非表示 ===== */
+    footer, #MainMenu,
+    [data-testid="manage-app-button"],
+    [data-testid="stStatusWidget"],
+    .viewerBadge_container__r5tak,
+    header[data-testid="stHeader"] {display: none !important; visibility: hidden !important; height: 0 !important;}
     </style>
     """,
     unsafe_allow_html=True,
